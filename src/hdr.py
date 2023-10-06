@@ -503,8 +503,8 @@ def compute_dark_frame(dark_frame_paths):
 
 
 def noise_calibration(ramp_image_paths, dark_frame_path):
-    ramp_images = [read_image(im, n=2) for im in tqdm(ramp_image_paths)]
-    dark_frame = read_image(dark_frame_path, n=2)
+    ramp_images = [read_image(im, n=1) for im in tqdm(ramp_image_paths)]
+    dark_frame = read_image(dark_frame_path, n=1)
     ramp_images_subtracted = np.dstack(
         [im - dark_frame for im in tqdm(ramp_images)])
     ramp_images_subtracted = np.clip(ramp_images_subtracted, 0,
